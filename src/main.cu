@@ -1,4 +1,5 @@
 #include "utility.cuh"
+#include "constants.cuh"
 
 int main() {
     checkCudaErrors(cudaSetDevice(0));
@@ -17,6 +18,10 @@ int main() {
     printf("      global memory: %.1f MiB\n", deviceProp.totalGlobalMem/1048576.0);
     printf("        free memory: %.1f MiB\n", gpu_free_mem/1048576.0);
     printf("\n");
+
+    printSimulationParameters();
+
+    auto cylinderMask = generateCylinderMask();
 
     return 0;
 }
